@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.cubeOn.persistence.BoardMapper">
+	<resultMap id="boardResultMap" type="board">
+		<id column="boardSeq" property="boardNo" />
+		<result column="title" property="title" />
+		<result column="content" property="content" />
+		<result column="registration" property="registration" />
+		<result column="stake" property="stake" />
+		<result column="work" property="work" />
+	</resultMap>
+	
+	<select id = "list" parameterType= "board" resultMap = "boardResultMap">
+		SELECT *
+		FROM board
+	</select>
+	
+	<select id = "add" parameterType= "board" resultMap = "boardResultMap">
+		INSERT INTO board(title, content, registration) values (
+			#{title}, #{content}, #{registration}
+		)
+	</select>
+	
+	
+</mapper>
